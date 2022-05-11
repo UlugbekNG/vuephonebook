@@ -12,7 +12,7 @@
           class="input"
           type="search"
           v-model="searchQuery"
-          placeholder="Поиск"
+          placeholder="Поиск по имени"
       >
       <sort-menu
           class="input"
@@ -35,23 +35,15 @@ import AddNumber from "@/components/AddNumber";
 import SortMenu from "@/components/UI/SortMenu";
 
 
+
 export  default {
   components: {
     AddNumber, NumberList, SortMenu,
   },
+
   data () {
     return {
-      numbers: [
-        {id: 1, owner: 'Otabek', num: 998971451010, group: 'Realsoft'},
-        {id: 2, owner: 'Ulugbek', num: 998979051551, group: 'Realsoft'},
-        {id: 3, owner: 'Sanjar', num: 998971234567, group: 'Home'},
-        {id: 4, owner: 'Drug', num: 998971457897, group: 'Maxalla'},
-        {id: 5, owner: 'Anvar', num: 998977894561, group: 'Home'},
-        {id: 6, owner: 'Bobir', num: 998977451235, group: 'Maxalla'},
-      ],
-      numGroups: [
-        {name: 'Realsoft', color: '#fffff'}
-      ],
+      numbers: [],
       selectedSort: '',
       searchQuery: '',
       sortOptions: [
@@ -61,6 +53,19 @@ export  default {
 
     }
   },
+  mounted() {
+    if (localStorage.numbers) {
+      this.numbers = JSON.parse(localStorage.numbers)
+    }
+  },
+  watch : {
+    numbers: {
+      handler(newNumber) {
+        localStorage.numbers = JSON.stringify(newNumber);
+      },
+      deep: true
+    }
+  },
   methods: {
     addNumber (number) {
       this.numbers.push(number);
@@ -68,6 +73,7 @@ export  default {
     removeNumber (number) {
       this.numbers = this.numbers.filter(n => n.id !== number.id)
     },
+
 
   },
   computed: {

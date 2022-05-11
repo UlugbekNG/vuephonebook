@@ -1,9 +1,10 @@
 <template>
   <section>
-    <div class="addnumber">
+    <div class="addNumber">
       <contact-input
           v-model="number.owner"
           type="text"
+          aria-required="true"
           placeholder="Название"
           class="input"
       />
@@ -11,11 +12,13 @@
           v-model="number.group"
           type="text"
           placeholder="Группа"
+          aria-required="true"
           class="input"
       />
-      <input-number
+      <contact-input
           v-model="number.num"
           type="number"
+          aria-required="true"
           placeholder="Номер"
           class="input"
       />
@@ -26,9 +29,9 @@
 
 <script>
 import ContactInput from "@/components/UI/ContactInput";
-import InputNumber from "@/components/UI/InputNumber";
+
 export default {
-  components: {InputNumber, ContactInput},
+  components: { ContactInput},
   data () {
     return {
       number: {
@@ -36,7 +39,7 @@ export default {
         owner: '',
         num: '',
         group: '',
-      }
+      },
     }
   },
   methods: {
@@ -54,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.addnumber {
+.addNumber {
   display: flex;
   flex-direction: column;
 
@@ -68,7 +71,7 @@ export default {
   border-radius: 5px;
 
 }
-.addnumber button {
+.addNumber button {
   width: 30%;
   margin: 10px auto;
   border: 2px #efefef solid;

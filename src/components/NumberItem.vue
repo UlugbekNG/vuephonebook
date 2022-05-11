@@ -4,7 +4,7 @@
       <p><span>ID</span> {{ number.id }}</p>
       <p><span>Имя</span> {{ number.owner }}</p>
       <p><span>Группа</span> {{ number.group }}</p>
-      <p><span>Номер</span> {{ number.num }}</p>
+      <p><span>Номер</span> {{ number.num }} <a href="tel:{{ number.num }}"> <img src="@/assets/phone-icon.png" alt="" width="16" height="16"> </a></p>
     </div>
     <div class="numberBtn">
       <contact-btn @click="$emit('remove', number)" class="btn-1">Удалить</contact-btn>
@@ -15,6 +15,7 @@
 
 <script>
 import ContactBtn from "@/components/UI/ContactBtn";
+
 export default {
   components: {ContactBtn},
   props: {
