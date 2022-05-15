@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact shadow-sm">
     <div>
       <p><span>ID</span> {{ number.id }}</p>
       <p><span>Имя</span> {{ number.owner }}</p>
@@ -7,17 +7,21 @@
       <p><span>Номер</span> {{ number.num }} <a href="tel:{{ number.num }}"> <img src="@/assets/phone-icon.png" alt="" width="16" height="16"> </a></p>
     </div>
     <div class="numberBtn">
-      <contact-btn @click="$emit('remove', number)" class="btn-1">Удалить</contact-btn>
-      <contact-btn class="btn-1">Редактировать</contact-btn>
+      <button @click="$emit('remove', number)" class="btn-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import ContactBtn from "@/components/UI/ContactBtn";
+
 
 export default {
-  components: {ContactBtn},
+  components: {},
   props: {
     number: {
       type: Object,
@@ -31,14 +35,17 @@ export default {
 .contact {
   padding: 5px;
   border: 2px #003fb300 solid;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  /*background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);*/
   width: 30%;
+  background: white;
   margin: 10px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
 }
-
+.contact p {
+  margin-bottom: 0;
+}
 .contact p span {
   font-weight: bold;
 }

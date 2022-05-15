@@ -15,11 +15,18 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Bahnschrift;
-}
+  overflow-x: hidden;
 
+
+
+}
+body {
+  background-image: url("assets/background.png");
+}
 .app {
   padding: 20px;
   align-self: center;
+
+
 }
 </style>

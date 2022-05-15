@@ -38,7 +38,7 @@ export default {
   flex-wrap: wrap;
   width: 100%;
   margin: 0 auto;
-  justify-content: center;
+  justify-content: start;
 
 }
 .number-list-item {
