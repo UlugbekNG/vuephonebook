@@ -1,6 +1,7 @@
 <template>
   <section>
     <div class="addNumber">
+      <form @submit="addNumber">
         <div class="mb-3">
           <label for="owner" class="form-label">Имя контакта</label>
           <input type="text" v-model="number.owner" class="form-control" id="owner" aria-describedby="emailHelp" required>
@@ -14,7 +15,8 @@
           <label for="number" class="form-label">Номер</label>
           <input type="number" v-model="number.num" class="form-control" id="number" required>
         </div>
-        <button type="submit" class="btn btn-primary" @click="addNumber" value="submit">Сохранить</button>
+        <button type="submit" class="btn btn-primary" @click.prevent.stop="addNumber" value="submit">Сохранить</button>
+      </form>
     </div>
 
   </section>
@@ -39,6 +41,16 @@ export default {
 
   methods: {
     addNumber () {
+      if (this.number.owner === ''){
+        return false
+      }
+      if (this.number.group === ''){
+        return false
+      }
+      if (this.number.num === ''){
+        return false
+      }
+
       this.number.id = Date.now();
       this.$emit('create', this.number)
       this.number = {

@@ -11,7 +11,7 @@
       </transition-group>
 
     </div>
-    <h1 v-else style="color: #4f4f4f">Список контактов пуст</h1>
+    <h1 v-else><span class="badge text-danger"> Список контактов пуст</span></h1>
   </section>
 </template>
 
@@ -53,5 +53,8 @@ export default {
 .number-list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+.badge {
+  backdrop-filter: blur(4px);
 }
 </style>
